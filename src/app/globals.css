@@ -29,8 +29,13 @@ hr.divider {
   margin: 44px 0;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: var(--text);
+}
+
 .nav-link:focus-visible {
   color: var(--text);
-  outline: none;
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
