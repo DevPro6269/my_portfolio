@@ -1,5 +1,6 @@
 'use client'
 import { useRef } from 'react'
+import type { CSSProperties } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
 
@@ -16,7 +17,7 @@ const LINKS = [
   { label: 'CV ↓',       href: '/cv.pdf', external: false },
 ]
 
-const linkStyle: React.CSSProperties = {
+const linkStyle: CSSProperties = {
   fontFamily: 'var(--font-geist-mono), monospace',
   fontSize: 11,
   color: 'var(--text)',
