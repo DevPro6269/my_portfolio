@@ -1,43 +1,23 @@
 export type SkillCategory = {
   label: string
-  skills: { name: string; icon: string }[]
+  skills: string[]
 }
 
 export const SKILLS: SkillCategory[] = [
   {
-    label: 'AI',
-    skills: [
-      { name: 'LLMs', icon: '🤖' },
-      { name: 'LangChain', icon: '🔗' },
-      { name: 'Google ADK', icon: '🧠' },
-      { name: 'RAG', icon: '📚' },
-    ],
+    label: 'Frontend',
+    skills: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
   },
   {
     label: 'Backend',
-    skills: [
-      { name: 'Python', icon: '🐍' },
-      { name: 'FastAPI', icon: '⚡' },
-      { name: 'PostgreSQL', icon: '🗃️' },
-      { name: 'SQLAlchemy', icon: '🔷' },
-    ],
+    skills: ['Python', 'FastAPI', 'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'MySQL'],
   },
   {
-    label: 'Frontend',
-    skills: [
-      { name: 'Next.js', icon: '▲' },
-      { name: 'TypeScript', icon: '📘' },
-      { name: 'React', icon: '⚛️' },
-      { name: 'Tailwind', icon: '🎨' },
-    ],
+    label: 'Cloud & DevOps',
+    skills: ['AWS EC2', 'AWS RDS', 'AWS S3', 'CloudFront', 'NGINX', 'PM2', 'CI/CD', 'Git'],
   },
   {
-    label: 'Tools',
-    skills: [
-      { name: 'Docker', icon: '🐳' },
-      { name: 'Git', icon: '📦' },
-      { name: 'Alembic', icon: '🔄' },
-      { name: 'Bun', icon: '🥟' },
-    ],
+    label: 'AI',
+    skills: ['AI Agents', 'LLMs', 'Google ADK', 'WhatsApp API', 'Instagram API', 'Telegram API'],
   },
 ]
