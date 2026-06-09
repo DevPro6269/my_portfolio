@@ -30,7 +30,9 @@ export function Experience() {
       start: 'top 88%',
       once: true,
       onEnter: () => {
-        gsap.from(containerRef.current?.querySelectorAll('.exp-entry'), {
+        const entries = containerRef.current?.querySelectorAll('.exp-entry')
+        if (!entries?.length) return
+        gsap.from(entries, {
           opacity: 0,
           y: 20,
           stagger: 0.1,

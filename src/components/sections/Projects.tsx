@@ -30,7 +30,9 @@ export function Projects() {
       start: 'top 88%',
       once: true,
       onEnter: () => {
-        gsap.from(containerRef.current?.querySelectorAll('.project-entry'), {
+        const entries = containerRef.current?.querySelectorAll('.project-entry')
+        if (!entries?.length) return
+        gsap.from(entries, {
           opacity: 0,
           y: 20,
           stagger: 0.1,
