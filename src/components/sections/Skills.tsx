@@ -1,8 +1,19 @@
 'use client'
 import { useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { SKILLS } from '@/data/skills'
+
+const sectionLabelStyle: CSSProperties = {
+  fontFamily: 'var(--font-geist-mono), monospace',
+  fontSize: 11,
+  letterSpacing: '2px',
+  textTransform: 'uppercase',
+  color: 'var(--label)',
+  display: 'block',
+  marginBottom: 20,
+}
 
 export function Skills() {
   const containerRef = useRef<HTMLElement>(null)
@@ -12,10 +23,11 @@ export function Skills() {
   useGSAP(() => {
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: 'top 75%',
+      start: 'top 88%',
+      once: true,
       onEnter: () => {
         const el = containerRef.current!
-        gsap.from(el.querySelector('.skills-eyebrow'), { opacity: 0, x: -20, duration: 0.4 })
+        gsap.from(el.querySelector('.skills-label'), { opacity: 0, y: 8, duration: 0.4 })
         gsap.from(el.querySelectorAll('.skills-tab-btn'), {
           opacity: 0, y: 10, stagger: 0.06, duration: 0.35, delay: 0.15,
         })
@@ -36,21 +48,28 @@ export function Skills() {
   }
 
   return (
-    <section ref={containerRef} id="skills" className="py-24 px-8 md:px-16 lg:px-24">
-      <span className="skills-eyebrow font-[var(--font-mono)] text-[10px] tracking-[4px] text-[var(--color-accent)]/70 mb-10 block">
-        // tech.stack
-      </span>
+    <section ref={containerRef} id="skills">
+      <span className="skills-label" style={sectionLabelStyle}>Skills</span>
 
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 18 }}>
         {SKILLS.map((cat, i) => (
           <button
             key={cat.label}
             onClick={() => handleTabClick(i)}
-            className={`skills-tab-btn font-[var(--font-mono)] text-[10px] tracking-[2px] uppercase px-4 py-1.5 rounded border transition-colors ${
-              i === activeTab
-                ? 'border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/10'
-                : 'border-[var(--color-accent)]/15 text-[var(--color-accent)]/40 hover:border-[var(--color-accent)]/40 hover:text-[var(--color-accent)]/70'
-            }`}
+            className="skills-tab-btn"
+            style={{
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: 10,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              padding: '5px 14px',
+              borderRadius: 20,
+              border: `1px solid ${i === activeTab ? 'var(--text)' : 'var(--border)'}`,
+              background: i === activeTab ? 'var(--text)' : 'transparent',
+              color: i === activeTab ? 'var(--bg)' : 'var(--muted)',
+              cursor: 'pointer',
+              transition: 'all 0.15s',
+            }}
           >
             {cat.label}
           </button>
@@ -58,14 +77,27 @@ export function Skills() {
       </div>
 
       <div
-        className={`flex flex-wrap gap-2.5 transition-opacity duration-[220ms] ease-in-out ${
-          isTransitioning ? 'opacity-0' : 'opacity-100'
-        }`}
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 8,
+          opacity: isTransitioning ? 0 : 1,
+          transition: 'opacity 220ms ease-in-out',
+        }}
       >
         {SKILLS[activeTab].skills.map((skill) => (
           <div
             key={skill}
-            className="skills-pill font-[var(--font-mono)] border border-white/10 rounded-full text-[11px] px-[18px] py-[7px] text-white/40 hover:border-[var(--color-accent)]/25 hover:text-[var(--color-accent)]/65 transition-colors cursor-default"
+            className="skills-pill"
+            style={{
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: 11,
+              color: 'var(--sub)',
+              background: 'var(--tag-bg)',
+              padding: '5px 14px',
+              borderRadius: 20,
+              cursor: 'default',
+            }}
           >
             {skill}
           </div>
