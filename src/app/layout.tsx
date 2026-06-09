@@ -1,26 +1,32 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Lora, Geist_Mono } from 'next/font/google'
 import { Navbar } from '@/components/layout/Navbar'
-import { SmoothScroller } from '@/components/layout/SmoothScroller'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-lora',
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+})
 
 export const metadata: Metadata = {
-  title: 'Dev Rathore — AI Full Stack Engineer',
+  title: 'Dev Rathore — Full Stack & AI Engineer',
   description:
-    'Portfolio of Dev Rathore, AI Full Stack Engineer building intelligent products with Python, FastAPI, Next.js & LLMs.',
+    'Portfolio of Dev Rathore, Full Stack & AI Engineer building intelligent products with Next.js, FastAPI, and LLMs.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
-      <body className="font-[var(--font-inter)]">
-        <SmoothScroller>
-          <Navbar />
-          {children}
-        </SmoothScroller>
+    <html lang="en" className={`${lora.variable} ${geistMono.variable}`}>
+      <body style={{ fontFamily: 'var(--font-lora), serif', lineHeight: 1.75 }}>
+        <Navbar />
+        {children}
       </body>
     </html>
   )
