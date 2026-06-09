@@ -9,11 +9,13 @@ export function Projects() {
   const trackRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
+    const cards = containerRef.current!.querySelectorAll('.project-card')
+
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top 70%',
       onEnter: () => {
-        gsap.from('.project-card', {
+        gsap.from(cards, {
           opacity: 0, x: 80, stagger: 0.12, duration: 0.6,
         })
       },
