@@ -1,8 +1,6 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import type { CSSProperties } from 'react'
-import { useGSAP } from '@gsap/react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { SKILLS } from '@/data/skills'
 
 const sectionLabelStyle: CSSProperties = {
@@ -16,27 +14,8 @@ const sectionLabelStyle: CSSProperties = {
 }
 
 export function Skills() {
-  const containerRef = useRef<HTMLElement>(null)
   const [activeTab, setActiveTab] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
-
-  useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: 'top 88%',
-      once: true,
-      onEnter: () => {
-        const el = containerRef.current!
-        gsap.from(el.querySelector('.skills-label'), { opacity: 0, y: 8, duration: 0.4 })
-        gsap.from(el.querySelectorAll('.skills-tab-btn'), {
-          opacity: 0, y: 10, stagger: 0.06, duration: 0.35, delay: 0.15,
-        })
-        gsap.from(el.querySelectorAll('.skills-pill'), {
-          opacity: 0, y: 12, stagger: 0.04, duration: 0.3, delay: 0.4,
-        })
-      },
-    })
-  }, { scope: containerRef })
 
   function handleTabClick(i: number) {
     if (i === activeTab) return
@@ -48,15 +27,14 @@ export function Skills() {
   }
 
   return (
-    <section ref={containerRef} id="skills">
-      <span className="skills-label" style={sectionLabelStyle}>Skills</span>
+    <section id="skills">
+      <span style={sectionLabelStyle}>Skills</span>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 18 }}>
         {SKILLS.map((cat, i) => (
           <button
             key={cat.label}
             onClick={() => handleTabClick(i)}
-            className="skills-tab-btn"
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: 10,
@@ -65,8 +43,8 @@ export function Skills() {
               padding: '5px 14px',
               borderRadius: 20,
               border: `1px solid ${i === activeTab ? 'var(--text)' : 'var(--border)'}`,
-              background: i === activeTab ? 'var(--text)' : 'transparent',
-              color: i === activeTab ? 'var(--bg)' : 'var(--muted)',
+              background: i === activeTab ? 'var(--text)' : 'var(--tag-bg)',
+              color: i === activeTab ? 'var(--bg)' : 'var(--sub)',
               cursor: 'pointer',
               transition: 'all 0.15s',
             }}
@@ -88,7 +66,6 @@ export function Skills() {
         {SKILLS[activeTab].skills.map((skill) => (
           <div
             key={skill}
-            className="skills-pill"
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: 11,

@@ -102,10 +102,10 @@ export function Contact() {
           fontFamily: 'var(--font-geist-mono), monospace',
           fontSize: 10,
           letterSpacing: '1px',
-          color: 'var(--border)',
+          color: 'var(--sub)',
         }}
       >
-        © 2026 Dev Rathore · Built with Next.js
+        © 2026 Dev Rathore · Built with ❤️ by Dev
       </footer>
     </section>
   )

@@ -5,16 +5,16 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
 
 const STATS = [
-  { value: '3+', label: 'Years' },
-  { value: '20+', label: 'Projects' },
-  { value: '5+', label: 'Clients' },
+  { value: '2+', label: 'Years' },
+  { value: '10+', label: 'Projects' },
+  // { value: '2', label: 'Expertise' },
 ]
 
 const LINKS = [
-  { label: 'GitHub ↗',   href: 'https://github.com/DevPro6269', external: true },
-  { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/dev-rathore-15299a201', external: true },
-  { label: 'Email',      href: 'mailto:devrathore653@gmail.com', external: false },
-  { label: 'CV ↓',       href: '/cv.pdf', external: false },
+  { label: 'GitHub ↗',   href: 'https://github.com/DevPro6269', external: true,  download: false },
+  { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/dev-rathore-15299a201', external: true,  download: false },
+  { label: 'Email',      href: 'mailto:devrathore653@gmail.com', external: false, download: false },
+  { label: 'CV ↓',       href: '/cv.pdf', external: false, download: true },
 ]
 
 const linkStyle: CSSProperties = {
@@ -113,11 +113,12 @@ export function Hero() {
       </div>
 
       <div className="hero-links" style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-        {LINKS.map(({ label, href, external }) => (
+        {LINKS.map(({ label, href, external, download }) => (
           <a
             key={label}
             href={href}
             {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            {...(download ? { download: 'Dev_Rathore_CV.pdf' } : {})}
             style={linkStyle}
           >
             {label}
