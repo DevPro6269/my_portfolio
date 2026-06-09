@@ -48,7 +48,7 @@ export function Skills() {
             onClick={() => handleTabClick(i)}
             className={`skills-tab-btn font-[var(--font-mono)] text-[10px] tracking-[2px] uppercase px-4 py-1.5 rounded border transition-colors ${
               i === activeTab
-                ? 'border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/8'
+                ? 'border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/10'
                 : 'border-[var(--color-accent)]/15 text-[var(--color-accent)]/40 hover:border-[var(--color-accent)]/40 hover:text-[var(--color-accent)]/70'
             }`}
           >

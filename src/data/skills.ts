@@ -18,6 +18,6 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     label: 'AI',
-    skills: ['AI Agents', 'LLMs', 'Google ADK', 'WhatsApp API', 'Instagram API', 'Telegram API'],
+    skills: ['AI Agents', 'LLMs', 'Google ADK', 'WhatsApp API', 'RAG', 'Multi-Tenant SaaS'],
   },
 ]
