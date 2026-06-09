@@ -14,11 +14,12 @@ export function Skills() {
       trigger: containerRef.current,
       start: 'top 75%',
       onEnter: () => {
-        gsap.from('.skills-eyebrow', { opacity: 0, x: -20, duration: 0.4 })
-        gsap.from('.skills-tab-btn', {
+        const el = containerRef.current!
+        gsap.from(el.querySelector('.skills-eyebrow'), { opacity: 0, x: -20, duration: 0.4 })
+        gsap.from(el.querySelectorAll('.skills-tab-btn'), {
           opacity: 0, y: 10, stagger: 0.06, duration: 0.35, delay: 0.15,
         })
-        gsap.from('.skills-pill', {
+        gsap.from(el.querySelectorAll('.skills-pill'), {
           opacity: 0, y: 12, stagger: 0.04, duration: 0.3, delay: 0.4,
         })
       },
@@ -57,7 +58,7 @@ export function Skills() {
       </div>
 
       <div
-        className={`flex flex-wrap gap-2.5 transition-opacity duration-[220ms] ease ${
+        className={`flex flex-wrap gap-2.5 transition-opacity duration-[220ms] ease-in-out ${
           isTransitioning ? 'opacity-0' : 'opacity-100'
         }`}
       >
