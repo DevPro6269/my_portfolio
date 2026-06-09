@@ -5,6 +5,12 @@ import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { EXPERIENCE } from '@/data/experience'
 
+const separatorStyle: CSSProperties = {
+  marginTop: 24,
+  paddingTop: 24,
+  borderTop: '1px solid var(--border)',
+}
+
 const sectionLabelStyle: CSSProperties = {
   fontFamily: 'var(--font-geist-mono), monospace',
   fontSize: 11,
@@ -22,8 +28,9 @@ export function Experience() {
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top 88%',
+      once: true,
       onEnter: () => {
-        gsap.from(containerRef.current!.querySelectorAll('.exp-entry'), {
+        gsap.from(containerRef.current?.querySelectorAll('.exp-entry'), {
           opacity: 0,
           y: 20,
           stagger: 0.1,
@@ -45,9 +52,9 @@ export function Experience() {
           <div
             key={entry.role}
             className="exp-entry"
-            style={i > 0 ? { marginTop: 24, paddingTop: 24, borderTop: '1px solid var(--border)' } : {}}
+            style={i > 0 ? separatorStyle : {}}
           >
-            <div style={{ fontSize: 17, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
+            <div style={{ fontFamily: 'var(--font-lora), serif', fontSize: 17, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
               {entry.role}
             </div>
             <div
