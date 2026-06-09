@@ -35,14 +35,3 @@ vi.mock('@/lib/gsap', () => ({
 vi.mock('@gsap/react', () => ({
   useGSAP: vi.fn(),
 }))
-
-vi.mock('lenis', () => ({
-  default: vi.fn().mockImplementation(() => ({
-    on: vi.fn(),
-    raf: vi.fn(),
-    destroy: vi.fn(),
-    scrollTo: vi.fn(),
-    stop: vi.fn(),
-    start: vi.fn(),
-  })),
-}))

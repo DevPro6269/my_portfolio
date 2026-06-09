@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${lora.variable} ${geistMono.variable}`}>
-      <body style={{ fontFamily: 'var(--font-lora), serif', lineHeight: 1.75 }}>
+      <body>
         <Navbar />
         {children}
       </body>
