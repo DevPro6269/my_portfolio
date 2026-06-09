@@ -4,9 +4,8 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
 
 const SOCIALS = [
-  { label: 'GitHub', href: 'https://github.com/' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/' },
-  { label: 'Twitter', href: 'https://twitter.com/' },
+  { label: 'GitHub', href: 'https://github.com/DevPro6269' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/dev-rathore-15299a201' },
 ]
 
 export function Contact() {

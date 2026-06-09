@@ -8,23 +8,26 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Siharilabs Platform',
-    description: 'AI agent runtime + WhatsApp Business API management platform with multi-tenant architecture.',
-    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Google ADK'],
-    liveUrl: '#',
-    githubUrl: '#',
-  },
-  {
     title: 'Chatverce',
-    description: 'WhatsApp Manager — real-time messaging frontend with SSE, infinite scroll, and Redux.',
-    tags: ['Next.js', 'TypeScript', 'Redux', 'MUI'],
+    description:
+      'Multi-tenant WhatsApp API SaaS platform enabling businesses to automate customer conversations at scale. AI-driven chat workflows with intent detection, automated replies, and intelligent handover to human support.',
+    tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'AWS', 'Google ADK'],
     liveUrl: '#',
     githubUrl: '#',
   },
   {
-    title: 'Add Your Project',
-    description: 'Update src/data/projects.ts to add your own project here.',
-    tags: ['React', 'Node.js'],
+    title: 'Acadma',
+    description:
+      'End-to-end online art course marketplace with course management, payments, authentication, and instructor dashboards. Reusable backend APIs consumed by both web and mobile apps.',
+    tags: ['Next.js', 'Node.js', 'MongoDB', 'AWS'],
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  {
+    title: 'Eu-Pay',
+    description:
+      'PhonePe-style digital payments app with user onboarding, wallet balance handling, and peer-to-peer money transfer. JWT-based auth middleware, transaction validation, and webhook processing for real-time status updates.',
+    tags: ['Node.js', 'MongoDB', 'JWT', 'REST API'],
     liveUrl: '#',
     githubUrl: '#',
   },

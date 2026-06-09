@@ -3,6 +3,7 @@ import { Experience } from '@/components/sections/Experience'
 
 it('renders experience entries', () => {
   render(<Experience />)
-  expect(screen.getByText('Founder & Lead Engineer')).toBeInTheDocument()
-  expect(screen.getByText('Siharilabs')).toBeInTheDocument()
+  expect(screen.getByText('Founding Engineer — Full Stack & AI')).toBeInTheDocument()
+  expect(screen.getByText(/Sihari Labs/)).toBeInTheDocument()
+  expect(screen.getByText('Full Stack Developer Intern')).toBeInTheDocument()
 })

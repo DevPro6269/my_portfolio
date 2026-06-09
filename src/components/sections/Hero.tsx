@@ -107,8 +107,12 @@ export function Hero() {
 
         <div className="hero-avatar flex justify-center">
           <div className="relative">
-            <div className="w-44 h-44 rounded-full border-2 border-[var(--color-accent)]/25 bg-gradient-to-br from-[#0d1a15] to-[#1a1a2e] flex items-center justify-center">
-              <span className="font-black text-5xl text-[var(--color-accent)]">DR</span>
+            <div className="w-52 h-52 rounded-full overflow-hidden border-2 border-[var(--color-accent)]/25">
+              <img
+                src="/avatar.png"
+                alt="Dev Rathore"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <div className="absolute inset-[-12px] rounded-full border border-[var(--color-accent)]/10" />
             <div className="absolute inset-[-24px] rounded-full border border-dashed border-[var(--color-accent)]/5" />

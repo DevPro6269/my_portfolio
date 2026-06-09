@@ -7,23 +7,17 @@ export type ExperienceEntry = {
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
-    period: '2023 — Present',
-    role: 'Founder & Lead Engineer',
-    company: 'Siharilabs',
+    period: 'Jun 2025 — Present',
+    role: 'Founding Engineer — Full Stack & AI',
+    company: 'Sihari Labs · Jhansi, India',
     description:
-      'Building AI-powered communication tools — WhatsApp Business API platform with multi-tenant architecture and LLM-driven agents.',
+      'Led end-to-end development of an AI-powered SaaS platform enabling businesses to deploy drag-and-drop AI agents on WhatsApp, Instagram, and Telegram. Architected Next.js frontend and FastAPI backend with real-time messaging pipelines, webhook processing, and multi-tenant RBAC. Designed full AWS infrastructure (EC2, RDS, S3, NGINX, PM2) with CI/CD pipelines.',
   },
   {
-    period: '2022 — 2023',
-    role: 'Full Stack Developer',
-    company: 'Freelance',
+    period: 'May 2025 — Jul 2025',
+    role: 'Full Stack Developer Intern',
+    company: 'Infotech Global Consultancy · Remote',
     description:
-      'Built web applications and AI integrations for clients. Specialised in FastAPI backends and React frontends.',
-  },
-  {
-    period: '2021 — 2022',
-    role: 'Junior Developer',
-    company: 'Previous Company',
-    description: 'Started professional development career working on web projects with React and Node.js.',
+      'Built and secured money transfer APIs using Node.js and MongoDB, handling real-time transaction flows with balance validation and webhook-based status updates. Developed JWT authentication middleware for a PhonePe-style digital payments application (Eu-Pay).',
   },
 ]

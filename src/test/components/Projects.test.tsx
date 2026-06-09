@@ -3,6 +3,7 @@ import { Projects } from '@/components/sections/Projects'
 
 it('renders project titles', () => {
   render(<Projects />)
-  expect(screen.getByText('Siharilabs Platform')).toBeInTheDocument()
   expect(screen.getByText('Chatverce')).toBeInTheDocument()
+  expect(screen.getByText('Acadma')).toBeInTheDocument()
+  expect(screen.getByText('Eu-Pay')).toBeInTheDocument()
 })
