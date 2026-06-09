@@ -1,5 +1,3 @@
-'use client'
-
 const NAV_LINKS = [
   { label: 'Work',     href: '#work' },
   { label: 'Projects', href: '#projects' },
@@ -40,6 +38,7 @@ export function Navbar() {
           <a
             key={href}
             href={href}
+            className="nav-link"
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: 11,
