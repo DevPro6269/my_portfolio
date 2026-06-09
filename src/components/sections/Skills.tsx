@@ -1,55 +1,72 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { SKILLS } from '@/data/skills'
 
 export function Skills() {
   const containerRef = useRef<HTMLElement>(null)
+  const [activeTab, setActiveTab] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   useGSAP(() => {
-    containerRef.current!.querySelectorAll('.skill-category').forEach((cat) => {
-      const label = cat.querySelector('.skill-cat-label')
-      const cards = cat.querySelectorAll('.skill-card')
-
-      ScrollTrigger.create({
-        trigger: cat,
-        start: 'top 75%',
-        onEnter: () => {
-          gsap.from(label, { opacity: 0, x: -20, duration: 0.4 })
-          gsap.from(cards, {
-            opacity: 0, scale: 0.85, y: 20,
-            stagger: 0.05, duration: 0.4, delay: 0.15,
-          })
-        },
-      })
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: 'top 75%',
+      onEnter: () => {
+        gsap.from('.skills-eyebrow', { opacity: 0, x: -20, duration: 0.4 })
+        gsap.from('.skills-tab-btn', {
+          opacity: 0, y: 10, stagger: 0.06, duration: 0.35, delay: 0.15,
+        })
+        gsap.from('.skills-pill', {
+          opacity: 0, y: 12, stagger: 0.04, duration: 0.3, delay: 0.4,
+        })
+      },
     })
   }, { scope: containerRef })
 
+  function handleTabClick(i: number) {
+    if (i === activeTab) return
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setActiveTab(i)
+      setIsTransitioning(false)
+    }, 220)
+  }
+
   return (
     <section ref={containerRef} id="skills" className="py-24 px-8 md:px-16 lg:px-24">
-      <span className="font-[var(--font-mono)] text-[10px] tracking-[4px] text-[var(--color-accent)]/70 mb-10 block">
+      <span className="skills-eyebrow font-[var(--font-mono)] text-[10px] tracking-[4px] text-[var(--color-accent)]/70 mb-10 block">
         // tech.stack
       </span>
-      <div className="space-y-12">
-        {SKILLS.map((cat) => (
-          <div key={cat.label} className="skill-category">
-            <h3 className="skill-cat-label font-[var(--font-mono)] text-xs tracking-widest text-[var(--color-accent)]/60 mb-4 uppercase">
-              {cat.label}
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {cat.skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="skill-card border border-[var(--color-accent)]/15 rounded-lg p-4 text-center bg-[#0d1a15]/40 hover:-translate-y-1 hover:border-[var(--color-accent)]/40 transition-transform cursor-default"
-                >
-                  <div className="text-2xl mb-2">{skill.icon}</div>
-                  <div className="font-[var(--font-mono)] text-[10px] text-[var(--color-accent)]/80">
-                    {skill.name}
-                  </div>
-                </div>
-              ))}
-            </div>
+
+      <div className="flex flex-wrap gap-2 mb-8">
+        {SKILLS.map((cat, i) => (
+          <button
+            key={cat.label}
+            onClick={() => handleTabClick(i)}
+            className={`skills-tab-btn font-[var(--font-mono)] text-[10px] tracking-[2px] uppercase px-4 py-1.5 rounded border transition-colors ${
+              i === activeTab
+                ? 'border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/8'
+                : 'border-[var(--color-accent)]/15 text-[var(--color-accent)]/40 hover:border-[var(--color-accent)]/40 hover:text-[var(--color-accent)]/70'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div
+        className={`flex flex-wrap gap-2.5 transition-opacity duration-[220ms] ease ${
+          isTransitioning ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        {SKILLS[activeTab].skills.map((skill) => (
+          <div
+            key={skill}
+            className="skills-pill font-[var(--font-mono)] border border-white/10 rounded-full text-[11px] px-[18px] py-[7px] text-white/40 hover:border-[var(--color-accent)]/25 hover:text-[var(--color-accent)]/65 transition-colors cursor-default"
+          >
+            {skill}
           </div>
         ))}
       </div>
