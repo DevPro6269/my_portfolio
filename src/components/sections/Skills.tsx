@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { SKILLS } from '@/data/skills'
+import { trackCustom } from '@/lib/fbpixel'
 
 const sectionLabelStyle: CSSProperties = {
   fontFamily: 'var(--font-geist-mono), monospace',
@@ -19,6 +20,7 @@ export function Skills() {
 
   function handleTabClick(i: number) {
     if (i === activeTab) return
+    trackCustom('ViewSkillCategory', { category: SKILLS[i].label })
     setIsTransitioning(true)
     setTimeout(() => {
       setActiveTab(i)
