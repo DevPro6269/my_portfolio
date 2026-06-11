@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Lora, Geist_Mono } from 'next/font/google'
 import { Navbar } from '@/components/layout/Navbar'
+import { MetaPixel } from '@/components/analytics/MetaPixel'
 import './globals.css'
 
 const lora = Lora({
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${lora.variable} ${geistMono.variable}`}>
       <body>
+        <MetaPixel />
         <Navbar />
         {children}
       </body>
