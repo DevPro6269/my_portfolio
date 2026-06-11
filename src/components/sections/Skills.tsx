@@ -30,28 +30,34 @@ export function Skills() {
     <section id="skills">
       <span style={sectionLabelStyle}>Skills</span>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 18 }}>
-        {SKILLS.map((cat, i) => (
-          <button
-            key={cat.label}
-            onClick={() => handleTabClick(i)}
-            style={{
-              fontFamily: 'var(--font-geist-mono), monospace',
-              fontSize: 10,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              padding: '5px 14px',
-              borderRadius: 20,
-              border: `1px solid ${i === activeTab ? 'var(--text)' : 'var(--border)'}`,
-              background: i === activeTab ? 'var(--text)' : 'var(--tag-bg)',
-              color: i === activeTab ? 'var(--bg)' : 'var(--sub)',
-              cursor: 'pointer',
-              transition: 'all 0.15s',
-            }}
-          >
-            {cat.label}
-          </button>
-        ))}
+      <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 22, rowGap: 6, marginBottom: 26 }}>
+        {SKILLS.map((cat, i) => {
+          const active = i === activeTab
+          return (
+            <button
+              key={cat.label}
+              onClick={() => handleTabClick(i)}
+              className="skill-tab"
+              data-active={active}
+              aria-pressed={active}
+              style={{
+                fontFamily: 'var(--font-geist-mono), monospace',
+                fontSize: 11,
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                padding: '0 0 6px',
+                background: 'none',
+                border: 'none',
+                borderBottom: `2px solid ${active ? 'var(--text)' : 'transparent'}`,
+                color: active ? 'var(--text)' : 'var(--muted)',
+                cursor: 'pointer',
+                transition: 'color 0.15s, border-color 0.15s',
+              }}
+            >
+              {cat.label}
+            </button>
+          )
+        })}
       </div>
 
       <div
@@ -68,11 +74,11 @@ export function Skills() {
             key={skill}
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
-              fontSize: 11,
+              fontSize: 12,
               color: 'var(--sub)',
               background: 'var(--tag-bg)',
-              padding: '5px 14px',
-              borderRadius: 20,
+              padding: '6px 14px',
+              borderRadius: 6,
               cursor: 'default',
             }}
           >

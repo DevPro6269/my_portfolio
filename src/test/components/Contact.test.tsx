@@ -9,11 +9,11 @@ it('renders heading and contact links', () => {
   const email = screen.getByRole('link', { name: 'Email' })
   expect(email).toHaveAttribute('href', 'mailto:devrathore653@gmail.com')
 
-  const github = screen.getByRole('link', { name: 'GitHub ↗' })
+  const github = screen.getByRole('link', { name: 'GitHub' })
   expect(github).toHaveAttribute('href', 'https://github.com/DevPro6269')
   expect(github).toHaveAttribute('target', '_blank')
   expect(github).toHaveAttribute('rel', 'noopener noreferrer')
 
-  const linkedin = screen.getByRole('link', { name: 'LinkedIn ↗' })
+  const linkedin = screen.getByRole('link', { name: 'LinkedIn' })
   expect(linkedin).toHaveAttribute('href', 'https://linkedin.com/in/dev-rathore-15299a201')
 })

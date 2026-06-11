@@ -1,13 +1,17 @@
 'use client'
 import { useRef } from 'react'
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ComponentType } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
+import { Mail, ArrowUpRight } from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from '@/components/icons/BrandIcons'
 
-const LINKS = [
-  { label: 'Email',      href: 'mailto:devrathore653@gmail.com', external: false },
-  { label: 'GitHub ↗',   href: 'https://github.com/DevPro6269',  external: true },
-  { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/dev-rathore-15299a201', external: true },
+type IconProps = { size?: number }
+
+const LINKS: { label: string; href: string; external: boolean; Icon: ComponentType<IconProps> }[] = [
+  { label: 'Email',    href: 'mailto:devrathore653@gmail.com', external: false, Icon: Mail },
+  { label: 'GitHub',   href: 'https://github.com/DevPro6269',  external: true,  Icon: GithubIcon },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/dev-rathore-15299a201', external: true, Icon: LinkedinIcon },
 ]
 
 const sectionLabelStyle: CSSProperties = {
@@ -21,9 +25,16 @@ const sectionLabelStyle: CSSProperties = {
 }
 
 const linkStyle: CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 7,
   fontFamily: 'var(--font-geist-mono), monospace',
   fontSize: 11,
   color: 'var(--text)',
+  textDecoration: 'none',
+}
+
+const linkLabelStyle: CSSProperties = {
   textDecoration: 'underline',
   textUnderlineOffset: 3,
   textDecorationColor: 'var(--border)',
@@ -81,14 +92,16 @@ export function Contact() {
         className="contact-links"
         style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}
       >
-        {LINKS.map(({ label, href, external }) => (
+        {LINKS.map(({ label, href, external, Icon }) => (
           <a
             key={label}
             href={href}
             style={linkStyle}
             {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            {label}
+            <Icon size={14} />
+            <span style={linkLabelStyle}>{label}</span>
+            {external && <ArrowUpRight size={12} />}
           </a>
         ))}
       </div>

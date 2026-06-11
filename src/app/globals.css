@@ -33,6 +33,15 @@ hr.divider {
   color: var(--text);
 }
 
+.skill-tab:hover {
+  color: var(--text);
+  border-bottom-color: var(--border);
+}
+
+.skill-tab[data-active='true']:hover {
+  border-bottom-color: var(--text);
+}
+
 .nav-link:focus-visible {
   color: var(--text);
   outline: 2px solid var(--text);

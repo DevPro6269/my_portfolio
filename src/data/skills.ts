@@ -17,7 +17,15 @@ export const SKILLS: SkillCategory[] = [
     skills: ['AWS EC2', 'AWS RDS', 'AWS S3', 'CloudFront', 'NGINX', 'PM2', 'CI/CD', 'Git'],
   },
   {
-    label: 'AI',
+    label: 'AI & Integration',
     skills: ['AI Agents', 'LLMs', 'Google ADK', 'WhatsApp API', 'RAG', 'Multi-Tenant SaaS'],
+  },
+  {
+    label: 'Design & Media',
+    skills: ['Graphic Design', 'Video Editing', 'Podcasting'],
+  },
+  {
+    label: 'Marketing & Business',
+    skills: ['Meta Ads', 'Google Ads', 'Lead Generation', 'Sales Management', 'Research & Business Analysis', 'Communication'],
   },
 ]

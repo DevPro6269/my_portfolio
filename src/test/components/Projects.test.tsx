@@ -1,15 +1,23 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { Projects } from '@/components/sections/Projects'
 
-it('renders projects with live-site links', () => {
+it('shows the first category by default with live-site links', () => {
   render(<Projects />)
 
-  const chatverce = screen.getByRole('link', { name: 'Chatverce ↗' })
+  const chatverce = screen.getByRole('link', { name: 'Chatverce' })
   expect(chatverce).toHaveAttribute('href', 'https://chatverce.com/')
 
-  const acadma = screen.getByRole('link', { name: 'Acadma ↗' })
-  expect(acadma).toHaveAttribute('href', 'https://acadma.in/')
+  // Other categories are hidden until their filter is selected.
+  expect(screen.queryByRole('link', { name: 'VibeApply' })).toBeNull()
+})
 
-  const eupay = screen.getByRole('link', { name: 'Eu-Pay ↗' })
-  expect(eupay).toHaveAttribute('href', 'https://www.european-pay.fr/')
+it('filters projects when a category is selected', () => {
+  render(<Projects />)
+
+  fireEvent.click(screen.getByRole('button', { name: 'Personal' }))
+
+  expect(screen.getByRole('link', { name: 'VibeApply' })).toBeTruthy()
+
+  // Product projects are no longer visible once filtered to Personal.
+  expect(screen.queryByRole('link', { name: 'Chatverce' })).toBeNull()
 })

@@ -7,12 +7,14 @@ describe('Skills', () => {
     vi.useRealTimers()
   })
 
-  it('renders all 4 tab buttons', () => {
+  it('renders all tab buttons', () => {
     render(<Skills />)
     expect(screen.getByRole('button', { name: 'Frontend' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Backend' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Cloud & DevOps' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'AI' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'AI & Integration' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Design & Media' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Marketing & Business' })).toBeInTheDocument()
   })
 
   it('shows Frontend skills by default', () => {
@@ -40,7 +42,7 @@ describe('Skills', () => {
     vi.useFakeTimers()
     render(<Skills />)
 
-    fireEvent.click(screen.getByRole('button', { name: 'AI' }))
+    fireEvent.click(screen.getByRole('button', { name: 'AI & Integration' }))
 
     act(() => { vi.advanceTimersByTime(220) })
 
