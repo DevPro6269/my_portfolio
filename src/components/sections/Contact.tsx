@@ -5,13 +5,38 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
 import { Mail, ArrowUpRight } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/icons/BrandIcons'
+import { trackEvent, trackCustom } from '@/lib/fbpixel'
 
 type IconProps = { size?: number }
 
-const LINKS: { label: string; href: string; external: boolean; Icon: ComponentType<IconProps> }[] = [
-  { label: 'Email',    href: 'mailto:devrathore653@gmail.com', external: false, Icon: Mail },
-  { label: 'GitHub',   href: 'https://github.com/DevPro6269',  external: true,  Icon: GithubIcon },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/dev-rathore-15299a201', external: true, Icon: LinkedinIcon },
+const LINKS: {
+  label: string
+  href: string
+  external: boolean
+  Icon: ComponentType<IconProps>
+  onTrack: () => void
+}[] = [
+  {
+    label: 'Email',
+    href: 'mailto:devrathore653@gmail.com',
+    external: false,
+    Icon: Mail,
+    onTrack: () => trackEvent('Contact', { method: 'email' }),
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/DevPro6269',
+    external: true,
+    Icon: GithubIcon,
+    onTrack: () => trackCustom('SocialClick', { network: 'github' }),
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/dev-rathore-15299a201',
+    external: true,
+    Icon: LinkedinIcon,
+    onTrack: () => trackCustom('SocialClick', { network: 'linkedin' }),
+  },
 ]
 
 const sectionLabelStyle: CSSProperties = {
@@ -58,6 +83,7 @@ export function Contact() {
         trigger: containerRef.current,
         start: 'top 88%',
         once: true,
+        onEnter: () => trackCustom('ViewContactSection'),
       },
     })
   }, { scope: containerRef })
@@ -92,10 +118,11 @@ export function Contact() {
         className="contact-links"
         style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}
       >
-        {LINKS.map(({ label, href, external, Icon }) => (
+        {LINKS.map(({ label, href, external, Icon, onTrack }) => (
           <a
             key={label}
             href={href}
+            onClick={onTrack}
             style={linkStyle}
             {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >

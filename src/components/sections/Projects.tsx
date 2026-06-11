@@ -7,6 +7,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { PROJECTS, CATEGORY_ORDER } from '@/data/projects'
 import type { ProjectCategory } from '@/data/projects'
 import { GithubIcon } from '@/components/icons/BrandIcons'
+import { trackEvent, trackCustom } from '@/lib/fbpixel'
 
 const FILTERS = CATEGORY_ORDER
 
@@ -62,7 +63,10 @@ export function Projects() {
             <button
               key={key}
               type="button"
-              onClick={() => setFilter(key)}
+              onClick={() => {
+                setFilter(key)
+                trackCustom('FilterProjects', { category: key })
+              }}
               aria-pressed={active}
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
@@ -104,6 +108,13 @@ export function Projects() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackEvent('ViewContent', {
+                        content_name: project.title,
+                        content_category: project.category,
+                        content_type: 'project',
+                      })
+                    }
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -122,6 +133,9 @@ export function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        trackCustom('GithubClick', { content_name: project.title })
+                      }
                       aria-label={`${project.title} on GitHub`}
                       style={{ color: 'var(--sub)', display: 'inline-flex', lineHeight: 0 }}
                     >
